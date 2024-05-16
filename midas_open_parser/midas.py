@@ -1,14 +1,44 @@
-# midas.py
+"""
+midas
+=====
+
+This module provides functionality for extracting MIDAS metadata from the parsed
+BADC-CSV metadata.
+"""
 from collections import defaultdict
 
 class UnknownMetadataLabelError(Exception):
+    """An exception raised when an unknown metadata label is encountered during
+    metadata extraction.
+    """
     pass
 
 class LabelHandler:
+    """The base class for handling metadata labels."""
+
     def handle_global(self, values):
+        """Handle global metadata labels.
+
+        Args:
+            values (list): The list of values associated with the global metadata label.
+
+        Returns:
+            list: The processed values for the global metadata label.
+        """
+
         return values
 
     def handle_field(self, field_name, values, label):
+        """Handle field-level metadata labels.
+
+        Args:
+            field_name (str): The name of the field associated with the metadata label.
+            values (list): The list of values associated with the field-level metadata label.
+            label (str): The metadata label being handled.
+
+        Returns:
+            dict: A dictionary containing the processed field-level metadata.
+        """
         raise UnknownMetadataLabelError(f"Unknown field-level metadata label: {label}")
 
 
@@ -139,6 +169,22 @@ default_label_handlers = {
 }
 
 def extract_midas_metadata(metadata, label_handlers=default_label_handlers):
+    """Extract MIDAS metadata from the parsed BADC-CSV metadata.
+
+    Args:
+        metadata (dict): The parsed BADC-CSV metadata dictionary.
+        label_handlers (dict, optional): A dictionary containing instances of
+        `LabelHandler` subclasses for handling specific metadata labels.
+
+    Returns:
+        dict: A dictionary containing the extracted MIDAS metadata, organized
+        into global metadata (`midas_metadata['global']`) and field-level
+        metadata (`midas_metadata[field_name]`).
+
+    Raises:
+        UnknownMetadataLabelError: If an unknown metadata label is encountered
+        and there is no corresponding handler in `label_handlers`.
+    """
     midas_metadata = defaultdict(lambda: defaultdict(dict))
     known_labels = set(label_handlers.keys())
     labels = set(metadata.keys())

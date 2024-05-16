@@ -1,10 +1,24 @@
-# badc_csv.py
+"""
+badc_csv
+========
+
+This module provides functions for parsing BADC-CSV files and extracting data
+records and metadata.
+"""
 import csv
 import sys
 
 from midas import extract_midas_metadata, UnknownMetadataLabelError
 
 def parse_badc_csv(file_path):
+    """Parse a BADC-CSV file and extract data records.
+
+    Args:
+        file_path (str): The path to the BADC-CSV file.
+
+    Returns:
+        list: A list of dictionaries, where each dictionary represents a data record.
+    """
     data_rows = []
     with open(file_path, 'r') as csvfile:
         reader = csv.reader(csvfile, delimiter=',')
@@ -27,6 +41,16 @@ def parse_badc_csv(file_path):
     return data_rows
 
 def parse_badc_csv_metadata(file_path):
+    """Parse the metadata section of a BADC-CSV file.
+
+    Args:
+        file_path (str): The path to the BADC-CSV file.
+
+    Returns:
+        dict: A dictionary containing the parsed metadata, where the keys are
+        the metadata labels, and the values are lists of tuples containing the
+        reference and associated values.
+    """
     metadata = {}
     with open(file_path, 'r', newline='') as csvfile:
         reader = csv.reader(csvfile, delimiter=',')

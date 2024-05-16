@@ -1,6 +1,11 @@
 """
 midas_open_parser
+=================
+
 A Python library for parsing BADC-CSV files from the MIDAS Open dataset.
+
+This library provides a flexible and extensible framework for handling various
+metadata labels and structures found in the MIDAS Open dataset.
 """
 
 __version__ = "0.1.0"
