@@ -12,17 +12,21 @@ The main goal of the `midas_open_parser` project is to provide tools to ingest t
 
 The Met Office Integrated Data Archive System (MIDAS) Open dataset is a collection of surface observations from the UK land surface observing network. It includes various meteorological parameters such as temperature, wind, precipitation, and cloud cover, among others. The dataset is maintained and distributed by the Met Office, the national meteorological service for the UK.
 
+For more information about the MIDAS Open dataset, please refer to the following resources:
+
+- [MIDAS Open User Guide](https://help.ceda.ac.uk/article/4982-midas-open-user-guide)
+
 ### BADC-CSV Format
 
 The BADC-CSV (British Atmospheric Data Centre Comma-Separated Values) format is a text-based format used to store and distribute data from the MIDAS Open dataset. It is a structured CSV format that includes a metadata section describing the data, followed by the actual data records.
 
 The metadata section follows various conventions, such as the Climate and Forecast (CF) conventions, to provide detailed information about the data variables, units, measurement methods, and other relevant metadata. This metadata is crucial for properly interpreting and understanding the data.
 
-For more information about the MIDAS Open dataset and the BADC-CSV format, please refer to the following resources:
+For more information about the BADC-CSV format, please refer to the following resources:
 
-- [MIDAS Open User Guide](https://help.ceda.ac.uk/article/4982-midas-open-user-guide)
-- [BADC-CSV Format for Data Exchange](https://help.ceda.ac.uk/article/105-badc-csv)
-- [The BADC-CSV Format: Meeting user and metadata requirements](https://zenodo.org/records/7355840)
+- [Short description](https://help.ceda.ac.uk/article/105-badc-csv)
+- [BADC-CSV GitHub repository](https://github.com/cedadev/badc-csv/tree/main)
+- [The BADC Text File - Guide for users, and producers](https://github.com/cedadev/badc-csv/blob/main/new_ASCII_file_format_guide.md)
 
 ## Features
 
