@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "midas_open_parser"
+version = "0.1.0"
+authors = [
+    {name = "TempoTerra", email = "vanuan+midasparser@gmail.com"},
+]
+description = "A Python library for parsing BADC-CSV files from the MIDAS Open dataset"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+keywords = ["atmospheric-science", "midas-open", "badc-csv", "parser", "environmental-data"]
+
+[project.urls]
+# "Homepage" = "https://tempo.terra/midas-open-parser"
+"Bug Tracker" = "https://github.com/tempoterra/midas_open_parser/issues"
+"Documentation" = "https://tempoterra.github.io/midas_open_parser"
+"Source Code" = "https://github.com/tempoterra/midas_open_parser"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["midas_open_parser"]
+
+
+[tool.setuptools.package-data]
+"midas_open_parser" = ["py.typed"]
+
+[tool.setuptools]
+package-dir = {"" = "."}
+license-files = ["LICENSE.txt"]
+
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
