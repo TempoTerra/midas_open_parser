@@ -2,8 +2,8 @@
 import csv
 import sys
 
-from midas import extract_midas_metadata, UnknownMetadataLabelError
-from badc_csv import  parse_badc_csv, parse_badc_csv_metadata
+from .midas import extract_midas_metadata, UnknownMetadataLabelError
+from .badc_csv import  parse_badc_csv, parse_badc_csv_metadata
 
 if __name__ == '__main__':
     print('hello')

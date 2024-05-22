@@ -8,7 +8,7 @@ records and metadata.
 import csv
 import sys
 
-from midas import extract_midas_metadata, UnknownMetadataLabelError
+from .midas import extract_midas_metadata, UnknownMetadataLabelError
 
 def parse_badc_csv(file_path):
     """Parse a BADC-CSV file and extract data records.
