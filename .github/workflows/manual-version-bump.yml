@@ -1,4 +1,4 @@
-name: Manual Version Bump and Release
+name: Manual version bump and push tag
 
 on:
   workflow_dispatch:
