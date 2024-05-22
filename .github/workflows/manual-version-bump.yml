@@ -35,7 +35,9 @@ jobs:
     - name: Bump version
       id: bump
       run: |
-        bump2version --current-version $(python -c "import midas_open_parser; print(midas_open_parser.__version__)") ${{ github.event.inputs.bump_type }} midas_open_parser/__init__.py pyproject.toml --commit --tag --tag-message "Release {new_version}" --commit-args '-c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com"'
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        bump2version --current-version $(python -c "import midas_open_parser; print(midas_open_parser.__version__)") ${{ github.event.inputs.bump_type }} midas_open_parser/__init__.py pyproject.toml --commit --tag --tag-message "Release {new_version}"
 
     - name: Push changes
       run: |
