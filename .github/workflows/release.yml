@@ -1,14 +1,15 @@
 name: Release
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*'
 
 jobs:
 
   bump-version:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,19 +21,10 @@ jobs:
         with:
           python-version: '3.10' 
 
-      - name: Update Version in Files
+      - name: Install dependencies
         run: |
-          # Update version in __init__.py
-          sed -i -E "s/__version__ = '.*'/__version__ = '${{ github.event.release.tag_name }}'/g" midas_open_parser/__init__.py
-        
-          # Update version in pyproject.toml
-          sed -i -E "s/version = '.*'/version = '${{ github.event.release.tag_name }}'/g" pyproject.toml
-    
-      - name: Commit Version Update
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "Bump version to ${{ github.event.release.tag_name }}"
-          branch: ${{ github.head_ref }}
+          python -m pip install --upgrade pip
+          pip install build twine
     
       - name: Build and publish
         env:
@@ -42,3 +34,23 @@ jobs:
           python -m build
           twine upload dist/*
 
+      - name: Create GitHub Release
+        id: create_release
+        uses: release-drafter/release-drafter@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        with:
+          tag: ${{ github.ref_name }}
+          version: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+
+      - name: Upload release assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist/*
+          asset_name: ${{ github.ref_name }}
+          asset_content_type: application/zip
