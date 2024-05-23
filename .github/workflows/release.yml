@@ -3,7 +3,7 @@ name: Release on version tag pushed
 on:
   workflow_dispatch:
     inputs:
-      version:
+      version_tag:
         description: 'Version to release'
         required: true
   repository_dispatch:
@@ -50,11 +50,11 @@ jobs:
         uses: release-drafter/release-drafter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_TAG: ${{ github.event.inputs.version }}
+          RELEASE_TAG: ${{ github.event.inputs.version_tag }}
         with:
-          tag: ${{ github.event.inputs.version }}
-          version: ${{ github.event.inputs.version }}
-          name: ${{ github.event.inputs.version }}
+          tag: ${{ github.event.inputs.version_tag }}
+          version: ${{ github.event.inputs.version_tag }}
+          name: ${{ github.event.inputs.version_tag }}
 
       - name: Checkout
         uses: actions/checkout@v4

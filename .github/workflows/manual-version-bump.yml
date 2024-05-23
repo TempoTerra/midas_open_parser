@@ -43,7 +43,7 @@ jobs:
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
         bump2version --current-version $(python -c "import midas_open_parser; print(midas_open_parser.__version__)") ${{ github.event.inputs.bump_type }} midas_open_parser/__init__.py pyproject.toml --commit --tag --tag-message "Release {new_version}"
         version=$(python -c "import midas_open_parser; print(midas_open_parser.__version__)")
-        echo "version=$version" >> $GITHUB_OUTPUT
+        echo "version_tag=v$(python -c 'import midas_open_parser; print(midas_open_parser.__version__)')" >> $GITHUB_OUTPUT
 
 
     - name: Push changes
@@ -66,7 +66,7 @@ jobs:
             workflow_id: 'release.yml',
             ref: process.env.GITHUB_REF_NAME
             inputs: {
-              version: '${{ needs.bump-version.outputs.version }}'
+              version_tag: '${{ needs.bump-version.outputs.version_tag }}'
             }
           })
 
