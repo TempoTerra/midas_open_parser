@@ -64,7 +64,7 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             workflow_id: 'release.yml',
-            ref: process.env.GITHUB_REF_NAME
+            ref: process.env.GITHUB_REF_NAME,
             inputs: {
               version_tag: needs.['bump-version'].outputs.version_tag
             }
