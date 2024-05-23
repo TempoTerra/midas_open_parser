@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "midas_open_parser"
-version = "0.1.25"
+version = "0.1.26"
 authors = [
     {name = "TempoTerra", email = "vanuan+midasparser@gmail.com"},
 ]
