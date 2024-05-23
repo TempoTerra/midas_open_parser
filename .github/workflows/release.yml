@@ -36,6 +36,9 @@ jobs:
 
 
   create-gh-release:
+    permissions:
+      # write permission is required to create a github release
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Create GitHub Release
