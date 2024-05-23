@@ -2,6 +2,10 @@ name: Release on version tag pushed
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release'
+        required: true
   repository_dispatch:
     types: [trigger-release]
 
@@ -46,11 +50,11 @@ jobs:
         uses: release-drafter/release-drafter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_TAG: ${{ github.ref_name }}
+          RELEASE_TAG: ${{ github.event.inputs.version }}
         with:
-          tag: ${{ github.ref_name }}
-          version: ${{ github.ref_name }}
-          name: ${{ github.ref_name }}
+          tag: ${{ github.event.inputs.version }}
+          version: ${{ github.event.inputs.version }}
+          name: ${{ github.event.inputs.version }}
 
       - name: Checkout
         uses: actions/checkout@v4
