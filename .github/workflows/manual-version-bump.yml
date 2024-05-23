@@ -61,9 +61,10 @@ jobs:
     steps:
     - name: Trigger release workflow
       uses: actions/github-script@v6
+      env:
+        BUMP_VERSION_TAG: ${{ needs.bump_version.outputs.version_tag }}
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        version_tag: ${{ needs.bump_version.outputs.version_tag }}
         script: |
           github.rest.actions.createWorkflowDispatch({
             owner: context.repo.owner,
@@ -71,7 +72,7 @@ jobs:
             workflow_id: 'release.yml',
             ref: process.env.GITHUB_REF_NAME,
             inputs: {
-              version_tag: context.inputs.version_tag
+              version_tag: process.env.BUMP_VERSION_TAG
             }
           })
 
