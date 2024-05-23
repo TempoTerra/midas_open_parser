@@ -18,8 +18,12 @@ permissions:
   actions: write
 
 jobs:
-  bump-version:
+  bump_version:
     runs-on: ubuntu-latest
+
+    outputs:
+      version_tag: ${{ steps.bump.outputs.version_tag }}
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -51,7 +55,7 @@ jobs:
         git push origin main --follow-tags
 
   trigger-release:
-    needs: bump-version
+    needs: bump_version
     runs-on: ubuntu-latest
 
     steps:
@@ -59,6 +63,7 @@ jobs:
       uses: actions/github-script@v6
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+        version_tag: ${{ needs.bump_version.outputs.version_tag }}
         script: |
           github.rest.actions.createWorkflowDispatch({
             owner: context.repo.owner,
@@ -66,7 +71,7 @@ jobs:
             workflow_id: 'release.yml',
             ref: process.env.GITHUB_REF_NAME,
             inputs: {
-              version_tag: needs['bump-version'].outputs.version_tag
+              version_tag: context.inputs.version_tag
             }
           })
 
