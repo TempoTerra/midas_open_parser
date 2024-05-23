@@ -59,6 +59,6 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             workflow_id: 'release.yml',
-            ref: {{ github.ref_name }}
+            ref: ${{ github.ref_name }}
           })
 
