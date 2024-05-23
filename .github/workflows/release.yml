@@ -55,6 +55,7 @@ jobs:
           tag: ${{ github.event.inputs.version_tag }}
           version: ${{ github.event.inputs.version_tag }}
           name: ${{ github.event.inputs.version_tag }}
+          publish: true
 
       - name: Checkout
         uses: actions/checkout@v4
