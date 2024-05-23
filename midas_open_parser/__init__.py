@@ -8,7 +8,7 @@ This library provides a flexible and extensible framework for handling various
 metadata labels and structures found in the MIDAS Open dataset.
 """
 
-__version__ = "0.1.18"
+__version__ = "0.1.19"
 __author__ = "Vanuan"
 __email__ = "vanuan+midasparser@gmail.com"
 
