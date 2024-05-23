@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  bump-version:
+  pypi-upload:
     runs-on: ubuntu-latest
 
     steps:
@@ -34,6 +34,10 @@ jobs:
           python -m build
           twine upload dist/*
 
+
+  create-gh-release:
+    runs-on: ubuntu-latest
+    steps:
       - name: Create GitHub Release
         id: create_release
         uses: release-drafter/release-drafter@v5
