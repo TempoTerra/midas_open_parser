@@ -66,7 +66,7 @@ jobs:
             workflow_id: 'release.yml',
             ref: process.env.GITHUB_REF_NAME,
             inputs: {
-              version_tag: needs.['bump-version'].outputs.version_tag
+              version_tag: needs['bump-version'].outputs.version_tag
             }
           })
 
