@@ -61,6 +61,6 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             workflow_id: 'release.yml',
-            ref: 'main'
+            ref: process.env.GITHUB_REF_NAME
           })
 
