@@ -72,11 +72,10 @@ jobs:
           python -m build
 
       - name: Upload release assets
-        uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: '*.tar.gz'
-          asset_name: 'midas_open_parser-*.tar.gz'
-          asset_content_type: application/zip
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for file in dist/*; do
+            echo "Uploading $file..."
+            gh release upload ${{ github.ref_name }} "$file" --clobber
+          done
