@@ -1,11 +1,8 @@
-# MIDAS Open parser
+# MIDAS Open Parser
 
 [![PyPI Version](https://img.shields.io/pypi/v/midas-open-parser)](https://pypi.org/project/midas-open-parser/)
 
-
-`midas_open_parser` is a Python library specifically designed to parse BADC-CSV files from the MIDAS Open dataset.
-
-It provides a tailored and extensible framework for handling the metadata labels and structures found in the MIDAS Open dataset.
+`midas_open_parser` is a Python library specifically designed to parse BADC-CSV files from the MIDAS Open dataset. It provides a tailored and extensible framework for handling the metadata labels and structures found in the MIDAS Open dataset.
 
 The main goal of the `midas_open_parser` project is to provide tools to ingest the MIDAS Open dataset into various destinations.
 
@@ -33,28 +30,32 @@ For more information about the BADC-CSV format, please refer to the following re
 
 ## Features
 
-- Parse BADC-CSV files and extract data records
-- Extract and process metadata from BADC-CSV files
-- Support for handling global and field-level metadata
-- Extensible architecture for adding new metadata label handlers
-- Error handling for unknown metadata labels
-- Command-line interface for running the parser
+- Parse BADC-CSV files and extract data records.
+- Extract and process metadata from BADC-CSV files.
+- Support for handling global and field-level metadata.
+- Extensible architecture for adding new metadata label handlers.
+- Error handling for unknown metadata labels.
+- Command-line interface for running the parser.
 
 ## Installation
 
-You can install badc-csv-parser using pip:
+You can install `midas-open-parser` using `pip`:
 
 ```bash
-pip install badc-csv-parser
+pip install midas-open-parser
 ```
 
 ## Usage
 
-Here's an example of how to use badc-csv-parser:
+Here's an example of how to use `midas_open_parser`:
 
 ```python
-from badc_csv_parser import parse_badc_csv, parse_badc_csv_metadata
-from midas import extract_midas_metadata
+from midas_open_parser import (
+    parse_badc_csv,
+    parse_badc_csv_metadata,
+    extract_midas_metadata,
+    UnknownMetadataLabelError,
+)
 
 # Parse the BADC-CSV file metadata
 metadata = parse_badc_csv_metadata('path/to/file.csv')
@@ -79,13 +80,22 @@ for row in data_rows:
     print(row)
 ```
 
+### Command-Line Interface
 
-You can also use the command-line interface:
+You can also use the command-line interface to parse BADC-CSV files:
 
-```python
-python -m badc_csv_parser.test path/to/file.csv
+```bash
+python -m midas_open_parser.badc_csv_parser path/to/file.csv
 ```
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Contributions are welcome! Please read the [CONTRIBUTING](CONTRIBUTING.md) guide for details on how to get started.
+
+## Acknowledgments
+
+- The Met Office for keeping the MIDAS Open dataset open to non-scientific community.
