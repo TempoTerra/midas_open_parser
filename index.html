@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>midas_open_parser documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d6d90d09"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            midas_open_parser
+          </a>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#document-installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-api">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-licence">Licence</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">midas_open_parser</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">midas_open_parser  documentation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-midas-open-parser-s-documentation">
+<h1>Welcome to midas_open_parser’s documentation!<a class="headerlink" href="#welcome-to-midas-open-parser-s-documentation" title="Link to this heading"></a></h1>
+<p>This is the documentation for the <code class="docutils literal notranslate"><span class="pre">midas_open_parser</span></code> library, which is designed to parse BADC-CSV files from the MIDAS Open dataset.</p>
+<div class="toctree-wrapper compound">
+<span id="document-installation"></span><section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>You can install <code class="docutils literal notranslate"><span class="pre">midas_open_parser</span></code> using pip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">midas_open_parser</span>
+</pre></div>
+</div>
+</section>
+<span id="document-usage"></span><section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<section id="parsing-badc-csv-files">
+<h3>Parsing BADC-CSV Files<a class="headerlink" href="#parsing-badc-csv-files" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">midas_open_parser</span></code> library provides functions to parse BADC-CSV files and extract data records and metadata.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">midas_open_parser</span><span class="w"> </span><span class="kn">import</span> <span class="n">parse_badc_csv</span><span class="p">,</span> <span class="n">parse_badc_csv_metadata</span>
+
+<span class="c1"># Parse the BADC-CSV file</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">parse_badc_csv_metadata</span><span class="p">(</span><span class="s1">&#39;path/to/file.csv&#39;</span><span class="p">)</span>
+<span class="n">data_rows</span> <span class="o">=</span> <span class="n">parse_badc_csv</span><span class="p">(</span><span class="s1">&#39;path/to/file.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="extracting-metadata">
+<h3>Extracting Metadata<a class="headerlink" href="#extracting-metadata" title="Link to this heading"></a></h3>
+<p>Once you have parsed the BADC-CSV file and obtained the metadata,
+you can extract the MIDAS metadata using the <code class="docutils literal notranslate"><span class="pre">extract_midas_metadata</span></code> function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">midas_open_parser</span><span class="w"> </span><span class="kn">import</span> <span class="n">extract_midas_metadata</span>
+
+<span class="c1"># Extract MIDAS metadata</span>
+<span class="n">midas_metadata</span> <span class="o">=</span> <span class="n">extract_midas_metadata</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">midas_metadata</span></code> dictionary contains the extracted metadata,
+organized into global metadata (<code class="docutils literal notranslate"><span class="pre">midas_metadata['global']</span></code>) and field-level
+metadata (<code class="docutils literal notranslate"><span class="pre">midas_metadata[field_name]</span></code>).</p>
+</section>
+<section id="handling-metadata-labels">
+<h3>Handling Metadata Labels<a class="headerlink" href="#handling-metadata-labels" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">midas_open_parser</span></code> library provides a flexible and extensible architecture
+for handling various metadata labels. Each label is associated with a handler
+class that defines how the metadata should be processed.</p>
+<p>The library includes default handlers for commonly used metadata labels,
+such as ‘Conventions’, ‘title’, ‘source’, ‘creator’, ‘activity’,
+‘feature_type’, ‘observation_station’, ‘location’, ‘collection_name’,
+‘collection_version_number’, ‘date_valid’, ‘history’, ‘last_revised_date’,
+‘comments’, ‘coordinate_variable’, ‘long_name’, ‘type’, ‘src_id’,
+‘historic_county_name’, ‘height’, ‘midas_qc_version_number’,
+‘midas_station_id’, and ‘missing_value’.</p>
+</section>
+<section id="handling-unknown-metadata-labels">
+<h3>Handling Unknown Metadata Labels<a class="headerlink" href="#handling-unknown-metadata-labels" title="Link to this heading"></a></h3>
+<p>If the library encounters an unknown metadata label,
+it will raise an <code class="docutils literal notranslate"><span class="pre">UnknownMetadataLabelError</span></code>. You can handle this error
+by catching the exception and taking appropriate action.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">midas_open_parser</span><span class="w"> </span><span class="kn">import</span> <span class="n">extract_midas_metadata</span><span class="p">,</span> <span class="n">UnknownMetadataLabelError</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">midas_metadata</span> <span class="o">=</span> <span class="n">extract_midas_metadata</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">UnknownMetadataLabelError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="extending-the-library">
+<h3>Extending the Library<a class="headerlink" href="#extending-the-library" title="Link to this heading"></a></h3>
+<p>You can extend the <code class="docutils literal notranslate"><span class="pre">midas_open_parser</span></code> library by creating new handler classes
+for additional metadata labels. To create a new handler class, you need
+to inherit from the LabelHandler base class and implement the <code class="docutils literal notranslate"><span class="pre">handle_global</span></code>
+or <code class="docutils literal notranslate"><span class="pre">handle_field</span></code> methods, depending on whether the label is a global
+or field-level metadata label.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">midas_open_parser.midas</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelHandler</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">NewLabelHandler</span><span class="p">(</span><span class="n">LabelHandler</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_global</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+        <span class="c1"># Implement logic for handling global metadata</span>
+        <span class="k">return</span> <span class="n">processed_values</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field_name</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+        <span class="c1"># Implement logic for handling field-level metadata</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">field_name</span><span class="p">:</span> <span class="n">processed_values</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<span id="document-api"></span><section id="module-midas_open_parser">
+<span id="api-reference"></span><h2>API reference<a class="headerlink" href="#module-midas_open_parser" title="Link to this heading"></a></h2>
+<section id="midas-open-parser">
+<h3>midas_open_parser<a class="headerlink" href="#midas-open-parser" title="Link to this heading"></a></h3>
+<p>A Python library for parsing BADC-CSV files from the MIDAS Open dataset.</p>
+<p>This library provides a flexible and extensible framework for handling various
+metadata labels and structures found in the MIDAS Open dataset.</p>
+</section>
+<dl class="py exception">
+<dt class="sig sig-object py" id="midas_open_parser.UnknownMetadataLabelError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">midas_open_parser.</span></span><span class="sig-name descname"><span class="pre">UnknownMetadataLabelError</span></span><a class="headerlink" href="#midas_open_parser.UnknownMetadataLabelError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>An exception raised when an unknown metadata label is encountered during
+metadata extraction.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="midas_open_parser.extract_midas_metadata">
+<span class="sig-prename descclassname"><span class="pre">midas_open_parser.</span></span><span class="sig-name descname"><span class="pre">extract_midas_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_handlers={'Conventions':</span> <span class="pre">&lt;midas_open_parser.midas.ConventionsHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'activity':</span> <span class="pre">&lt;midas_open_parser.midas.ActivityHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'collection_name':</span> <span class="pre">&lt;midas_open_parser.midas.CollectionNameHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'collection_version_number':</span> <span class="pre">&lt;midas_open_parser.midas.CollectionVersionNumberHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'comments':</span> <span class="pre">&lt;midas_open_parser.midas.CommentsHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'coordinate_variable':</span> <span class="pre">&lt;midas_open_parser.midas.CoordinateVariableHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'creator':</span> <span class="pre">&lt;midas_open_parser.midas.CreatorHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'date_valid':</span> <span class="pre">&lt;midas_open_parser.midas.DateValidHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'feature_type':</span> <span class="pre">&lt;midas_open_parser.midas.FeatureTypeHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'height':</span> <span class="pre">&lt;midas_open_parser.midas.HeightHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'historic_county_name':</span> <span class="pre">&lt;midas_open_parser.midas.HistoricCountyNameHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'history':</span> <span class="pre">&lt;midas_open_parser.midas.HistoryHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'last_revised_date':</span> <span class="pre">&lt;midas_open_parser.midas.LastRevisedDateHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'location':</span> <span class="pre">&lt;midas_open_parser.midas.LocationHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'long_name':</span> <span class="pre">&lt;midas_open_parser.midas.LongNameHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'midas_qc_version_number':</span> <span class="pre">&lt;midas_open_parser.midas.MidasQcVersionNumberHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'midas_station_id':</span> <span class="pre">&lt;midas_open_parser.midas.MidasStationIdHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'missing_value':</span> <span class="pre">&lt;midas_open_parser.midas.MissingValueHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'observation_station':</span> <span class="pre">&lt;midas_open_parser.midas.ObservationStationHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'source':</span> <span class="pre">&lt;midas_open_parser.midas.SourceHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'src_id':</span> <span class="pre">&lt;midas_open_parser.midas.SrcIdHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'title':</span> <span class="pre">&lt;midas_open_parser.midas.TitleHandler</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'type':</span> <span class="pre">&lt;midas_open_parser.midas.TypeHandler</span> <span class="pre">object&gt;}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#midas_open_parser.extract_midas_metadata" title="Link to this definition"></a></dt>
+<dd><p>Extract MIDAS metadata from the parsed BADC-CSV metadata.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>metadata (dict): The parsed BADC-CSV metadata dictionary.
+label_handlers (dict, optional): A dictionary containing instances of
+<cite>LabelHandler</cite> subclasses for handling specific metadata labels.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: A dictionary containing the extracted MIDAS metadata, organized
+into global metadata (<cite>midas_metadata[‘global’]</cite>) and field-level
+metadata (<cite>midas_metadata[field_name]</cite>).</p>
+</dd>
+<dt>Raises:</dt><dd><p>UnknownMetadataLabelError: If an unknown metadata label is encountered
+and there is no corresponding handler in <cite>label_handlers</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="midas_open_parser.parse_badc_csv">
+<span class="sig-prename descclassname"><span class="pre">midas_open_parser.</span></span><span class="sig-name descname"><span class="pre">parse_badc_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#midas_open_parser.parse_badc_csv" title="Link to this definition"></a></dt>
+<dd><p>Parse a BADC-CSV file and extract data records.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>file_path (str): The path to the BADC-CSV file.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: A list of dictionaries, where each dictionary represents a data record.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="midas_open_parser.parse_badc_csv_metadata">
+<span class="sig-prename descclassname"><span class="pre">midas_open_parser.</span></span><span class="sig-name descname"><span class="pre">parse_badc_csv_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#midas_open_parser.parse_badc_csv_metadata" title="Link to this definition"></a></dt>
+<dd><p>Parse the metadata section of a BADC-CSV file.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>file_path (str): The path to the BADC-CSV file.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: A dictionary containing the parsed metadata, where the keys are
+the metadata labels, and the values are lists of tuples containing the
+reference and associated values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<span id="document-contributing"></span><section id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Link to this heading"></a></h2>
+<p>Contributions to the <code class="docutils literal notranslate"><span class="pre">midas_open_parser</span></code> project are welcome! If you encounter any issues or have suggestions for improvements, please open an issue on the project’s GitHub repository. If you would like to contribute code, please submit a pull request.</p>
+</section>
+<span id="document-licence"></span><section id="licence">
+<h2>Licence<a class="headerlink" href="#licence" title="Link to this heading"></a></h2>
+<p>This project is licensed under the MIT License.</p>
+</section>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, vanuan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
